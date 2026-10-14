@@ -1,41 +1,71 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-
 <meta charset="UTF-8">
-<title>Everlasting 商城</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>我的商城</title>
 
 <style>
-.products{
-    padding:40px;
-    text-align:center;
+body {
+    margin:0;
+    font-family: Arial, "Microsoft YaHei", sans-serif;
+    background:#f5f5f5;
 }
 
-.product-list{
+header {
+    background:#111;
+    color:white;
+    padding:20px;
+    text-align:center;
+    font-size:28px;
+}
+
+.products {
     display:flex;
+    flex-wrap:wrap;
     gap:20px;
+    padding:30px;
     justify-content:center;
 }
 
-.product{
-    width:250px;
-    border:1px solid #ddd;
-    padding:20px;
+.card {
+    background:white;
+    width:260px;
+    border-radius:12px;
+    padding:15px;
+    box-shadow:0 3px 10px rgba(0,0,0,.1);
+}
+
+.card img {
+    width:100%;
+    height:220px;
+    object-fit:cover;
     border-radius:10px;
 }
 
-.product img{
-    width:100%;
+.name {
+    font-size:20px;
+    margin-top:15px;
 }
 
-.product button{
+.price {
+    color:#e60012;
+    font-size:22px;
+    margin-top:10px;
+    font-weight:bold;
+}
+
+button {
+    width:100%;
+    margin-top:15px;
+    padding:12px;
+    border:none;
     background:#111;
     color:white;
-    border:none;
-    padding:10px 20px;
+    border-radius:8px;
     cursor:pointer;
 }
-
 </style>
 
 </head>
@@ -43,190 +73,74 @@
 
 <body>
 
-
 <header>
-    <header>
-    ...
+我的商城
 </header>
 
 
+<div class="products">
 
-
-
-</div>
-
-</section>
-
-<div class="brand">
-    SHOU SHOP
-</div>
-
-<p class="slogan">
-    精选好物 · 简单购物 · 快速配送
-</p>
-
-
-
-<section class="banner">
-
-<h1>
-SHOU SHOP
-</h1>
-
-<p>
-高级品牌购物体验
-</p>
-
-</section>
-
-
-
-<div class="shop">
-
-
-<h2>
-<section class="products">
-
-<h2>热门商品</h2>
-
-<div class="product-list">
-
-<div class="product">
-<img src="https://via.placeholder.com/300">
-
-<h3>前下控制臂</h3>
-
-<p>价格：¥80</p>
-
-<button>
-加入购物车
-</button>
-
-</div>
-
-
-<div class="product">
-
-<img src="https://via.placeholder.com/300">
-
-<h3>前减机芯</h3>
-
-<p>价格：¥399</p>
-
-<button>
-加入购物车
-</button>
-
-</div>
-
-
-<div class="product">
-
-<img src="https://via.placeholder.com/300">
-
-<h3>后减机芯</h3>
-
-<p>价格：¥199</p>
-
-<button>
-加入购物车
-</button>
-
-</div>
-
-</div>
-
-</section>
-</h2>
-
-
-<div class="products" id="products">
-
-</div>
-
-
-</div>
-
-
-
-
-<script>
-
-
-let products =
-JSON.parse(localStorage.getItem("products")) || [];
-
-
-let box =
-document.getElementById("products");
-
-
-
-products.forEach(p=>{
-
-
-box.innerHTML+=`
 
 <div class="card">
 
+<img src="/images/31316796315.jpg">
 
-<img src="${p.image}">
+<div class="name">
+精品商品1
+</div>
 
+<div class="price">
+¥99
+</div>
 
-<h2>${p.name}</h2>
-
-
-<p>
-价格：¥${p.price}
-</p>
-
-
-<button onclick="add('${p.name}','${p.price}')">
-
+<button>
 加入购物车
-
 </button>
-
 
 </div>
 
 
-`;
 
-});
+<div class="card">
 
+<img src="/images/product2.jpg">
 
+<div class="name">
+时尚商品2
+</div>
 
+<div class="price">
+¥199
+</div>
 
-function add(name,price){
+<button>
+加入购物车
+</button>
 
-
-let cart=
-JSON.parse(localStorage.getItem("cart"))||[];
-
-
-cart.push({
-
-name:name,
-
-price:price
-
-});
+</div>
 
 
-localStorage.setItem(
-"cart",
-JSON.stringify(cart)
-);
+
+<div class="card">
+
+<img src="/images/product3.jpg">
+
+<div class="name">
+热门商品3
+</div>
+
+<div class="price">
+¥299
+</div>
+
+<button>
+加入购物车
+</button>
+
+</div>
 
 
-alert("加入购物车成功");
-
-
-}
-
-
-</script>
+</div>
 
 
 </body>
