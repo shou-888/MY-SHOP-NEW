@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>AutoPro 汽车配件商城</title>
+<title>Everlasting 汽车配件商城</title>
 
 
 <style>
@@ -252,7 +252,7 @@ footer{
 
 <nav>
 
-<a href="#">首页</a>
+
 
 <a href="#">发动机</a>
 
@@ -261,6 +261,10 @@ footer{
 <a href="#">轮胎</a>
 
 <a href="#">灯具</a>
+
+<a href="#">减震器</a>
+
+<a href="#">悬挂控制臂</a>
 
 </nav>
 
@@ -271,7 +275,7 @@ footer{
 
 <section class="search">
 
-<input placeholder="搜索汽车配件...">
+<input id="searchInput" placeholder="搜索汽车配件..." onkeyup="searchProduct()">
 
 </section>
 
@@ -333,13 +337,13 @@ footer{
 
 
 
-<div class="card">
+<div class="card" data-name="发动机滤芯">
 
 
 <img src="/images/engine.jpg">
 
 
-<div class="name">
+<div class="name"><div class="card" data-name="刹车片"></div>
 
 高性能发动机滤芯
 
@@ -405,7 +409,7 @@ footer{
 <div class="card">
 
 
-<img src="/images/tire.jpg">
+<div class="card" data-name="汽车轮胎">
 
 
 <div class="name">
@@ -500,7 +504,7 @@ KYB前减机芯
 <div class="card">
 
 
-<img src="/images/light.jpg">
+<div class="card" data-name="LED大灯">
 
 
 <div class="name">
@@ -540,7 +544,45 @@ LED汽车大灯
 </footer>
 
 
+<script>
 
+function searchProduct(){
+
+    let input = document
+    .getElementById("searchInput")
+    .value
+    .toLowerCase();
+
+
+    let products = document
+    .querySelectorAll(".card");
+
+
+    products.forEach(function(product){
+
+
+        let name = product
+        .getAttribute("data-name")
+        .toLowerCase();
+
+
+        if(name.includes(input)){
+
+            product.style.display="block";
+
+        }else{
+
+            product.style.display="none";
+
+        }
+
+
+    });
+
+
+}
+
+</script>
 </body>
 
 </html>
