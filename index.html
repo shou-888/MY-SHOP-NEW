@@ -1,147 +1,236 @@
+
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>我的商城</title>
-
-<style>
-body {
-    margin:0;
-    font-family: Arial, "Microsoft YaHei", sans-serif;
-    background:#f5f5f5;
-}
-
-header {
-    background:#111;
-    color:white;
-    padding:20px;
-    text-align:center;
-    font-size:28px;
-}
-
-.products {
-    display:flex;
-    flex-wrap:wrap;
-    gap:20px;
-    padding:30px;
-    justify-content:center;
-}
-
-.card {
-    background:white;
-    width:260px;
-    border-radius:12px;
-    padding:15px;
-    box-shadow:0 3px 10px rgba(0,0,0,.1);
-}
-
-.card img {
-    width:100%;
-    height:220px;
-    object-fit:cover;
-    border-radius:10px;
-}
-
-.name {
-    font-size:20px;
-    margin-top:15px;
-}
-
-.price {
-    color:#e60012;
-    font-size:22px;
-    margin-top:10px;
-    font-weight:bold;
-}
-
-button {
-    width:100%;
-    margin-top:15px;
-    padding:12px;
-    border:none;
-    background:#111;
-    color:white;
-    border-radius:8px;
-    cursor:pointer;
-}
-</style>
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MY SHOP | 精选好物</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, "Microsoft YaHei", sans-serif;
+      color: #222;
+      background: #f7f7f5;
+    }
+    header {
+      background: white;
+      padding: 20px 6%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      border-bottom: 1px solid #eee;
+    }
+    .logo { font-size: 23px; font-weight: 800; letter-spacing: 2px; }
+    .cart { font-weight: bold; }
+    .hero {
+      padding: 55px 6%;
+      background: #e8e9e2;
+    }
+    .hero h1 { font-size: clamp(30px, 5vw, 52px); margin: 0 0 14px; }
+    .hero p { color: #555; line-height: 1.7; }
+    main { padding: 32px 6%; }
+    .tools { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 24px; }
+    input, select {
+      padding: 12px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      background: white;
+      font-size: 15px;
+    }
+    input { flex: 1; min-width: 180px; }
+    .products {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 20px;
+    }
+    .card {
+      background: white;
+      border-radius: 12px;
+      padding: 14px;
+      overflow: hidden;
+    }
+    .photo {
+      height: 180px;
+      background: #eee;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 64px;
+    }
+    .card h3 { margin-bottom: 8px; }
+    .price { font-size: 19px; font-weight: bold; }
+    button {
+      cursor: pointer;
+      border: 0;
+      border-radius: 8px;
+      background: #222;
+      color: white;
+      padding: 12px 15px;
+    }
+    .card button { width: 100%; margin-top: 8px; }
+    .cart-panel {
+      margin-top: 35px;
+      padding: 22px;
+      background: white;
+      border-radius: 12px;
+    }
+    .cart-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 12px 0;
+      border-bottom: 1px solid #eee;
+    }
+    .cart-row button { padding: 6px 10px; }
+    footer { text-align: center; padding: 30px; color: #777; }
+    @media (max-width: 700px) {
+      .products { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+      .photo { height: 130px; font-size: 48px; }
+      header { padding: 16px 5%; }
+      main { padding: 24px 5%; }
+      .hero { padding: 38px 5%; }
+      .card { padding: 9px; }
+    }
+    @media (max-width: 380px) {
+      .products { grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
-
-
 <body>
+  <header>
+    <div class="logo">MY SHOP</div>
+    <div class="cart">购物车：<span id="count">0</span> 件</div>
+  </header>
 
-<header>
-我的商城
-</header>
+  <section class="hero">
+    <h1>发现你的心仪好物</h1>
+    <p>精选商品 · 简约设计 · 为日常生活增添灵感</p >
+  </section>
 
+  <main>
+    <h2>精选商品</h2>
+    <div class="tools">
+      <input id="search" placeholder="搜索商品名称..." />
+      <select id="category">
+        <option value="全部">全部分类</option>
+        <option value="数码">数码配件</option>
+        <option value="家居">家居生活</option>
+        <option value="服饰">时尚服饰</option>
+      </select>
+    </div>
 
-<div class="products">
+    <div class="products" id="products"></div>
 
+    <section class="cart-panel">
+      <h2>我的购物车</h2>
+      <div id="cartItems">购物车还是空的。</div>
+      <h3>总计：¥<span id="total">0.00</span></h3>
+      <button onclick="checkout()">模拟提交订单</button>
+      <p style="color:#777;font-size:13px">
+        演示版本，不会真实收款或创建线上订单。
+      </p >
+    </section>
+  </main>
 
-<div class="card">
+  <footer>© 2026 MY SHOP · 示例网店</footer>
 
-<img src="/images/31316796315.jpg">
+  <script>
+    const goods = [
+      {id:1,name:"无线耳机",price:199,category:"数码",emoji:"🎧"},
+      {id:2,name:"桌面台灯",price:129,category:"家居",emoji:"💡"},
+      {id:3,name:"休闲背包",price:159,category:"服饰",emoji:"🎒"},
+      {id:4,name:"智能手表",price:299,category:"数码",emoji:"⌚"},
+      {id:5,name:"香薰蜡烛",price:69,category:"家居",emoji:"🕯️"},
+      {id:6,name:"休闲卫衣",price:189,category:"服饰",emoji:"👕"}
+    ];
 
-<div class="name">
-精品商品1
-</div>
+    let cart = {};
+    try {
+      cart = JSON.parse(localStorage.getItem("my-shop-cart") || "{}");
+      if (!cart || typeof cart !== "object" || Array.isArray(cart)) cart = {};
+    } catch {
+      cart = {};
+    }
 
-<div class="price">
-¥99
-</div>
+    function saveCart() {
+      try {
+        localStorage.setItem("my-shop-cart", JSON.stringify(cart));
+      } catch {
+        console.warn("购物车无法保存到本地。");
+      }
+    }
 
-<button>
-加入购物车
-</button>
+    function renderProducts() {
+      const q = document.getElementById("search").value.toLowerCase();
+      const c = document.getElementById("category").value;
+      const list = goods.filter(g =>
+        g.name.toLowerCase().includes(q) &&
+        (c === "全部" || g.category === c)
+      );
 
-</div>
+      document.getElementById("products").innerHTML = list.map(g => `
+        <article class="card">
+          <div class="photo">${g.emoji}</div>
+          <h3>${g.name}</h3>
+          <p>${g.category}</p >
+          <div class="price">¥${g.price.toFixed(2)}</div>
+          <button onclick="add(${g.id})">加入购物车</button>
+        </article>
+      `).join("") || "<p>没有找到相关商品。</p >";
+    }
 
+    function add(id) {
+      cart[id] = (Number(cart[id]) || 0) + 1;
+      saveCart();
+      renderCart();
+    }
 
+    function change(id, amount) {
+      cart[id] = (Number(cart[id]) || 0) + amount;
+      if (cart[id] <= 0) delete cart[id];
+      saveCart();
+      renderCart();
+    }
 
-<div class="card">
+    function renderCart() {
+      let count = 0;
+      let total = 0;
+      const rows = [];
 
-<img src="/images/product2.jpg">
+      for (const g of goods) {
+        const qty = Number(cart[g.id]) || 0;
+        if (qty <= 0) continue;
+        count += qty;
+        total += g.price * qty;
+        rows.push(`
+          <div class="cart-row">
+            <div>${g.name}<br>¥${g.price} × ${qty}</div>
+            <div>
+              <button onclick="change(${g.id},-1)">−</button>
+              <button onclick="change(${g.id},1)">+</button>
+            </div>
+          </div>
+        `);
+      }
 
-<div class="name">
-时尚商品2
-</div>
+      document.getElementById("count").textContent = count;
+      document.getElementById("total").textContent = total.toFixed(2);
+      document.getElementById("cartItems").innerHTML =
+        rows.join("") || "购物车还是空的。";
+    }
 
-<div class="price">
-¥199
-</div>
+    function checkout() {
+      alert("这是演示页面，尚未接入真实订单和支付系统。");
+    }
 
-<button>
-加入购物车
-</button>
+    document.getElementById("search").addEventListener("input", renderProducts);
+    document.getElementById("category").addEventListener("change", renderProducts);
 
-</div>
-
-
-
-<div class="card">
-
-<img src="/images/product3.jpg">
-
-<div class="name">
-热门商品3
-</div>
-
-<div class="price">
-¥299
-</div>
-
-<button>
-加入购物车
-</button>
-
-</div>
-
-
-</div>
-
-
+    renderProducts();
+    renderCart();
+  </script>
 </body>
 </html>
