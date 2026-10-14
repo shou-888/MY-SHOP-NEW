@@ -5,53 +5,70 @@
 
 <meta charset="UTF-8">
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 
-<title>专业汽车底盘悬挂配件</title>
+<title>汽车底盘悬挂配件</title>
 
 
 <style>
 
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+margin:0;
+padding:0;
+box-sizing:border-box;
 }
 
 
 body{
 
-    font-family:"Microsoft YaHei",Arial;
-    background:#f5f5f5;
-    color:#333;
+font-family:"Microsoft YaHei";
+background:#f5f5f5;
+color:#333;
 
 }
-
 
 
 /* 顶部 */
 
 header{
 
-    background:#111;
-    color:white;
-    padding:30px;
+background:#111;
+color:white;
+padding:25px 8%;
 
 }
 
 
 .logo{
 
-    font-size:32px;
-    font-weight:bold;
+font-size:32px;
+font-weight:bold;
 
 }
 
 
 header p{
 
-    margin-top:10px;
-    color:#ccc;
+margin-top:10px;
+color:#ccc;
+
+}
+
+
+/* 导航 */
+
+nav{
+
+margin-top:20px;
+
+}
+
+
+nav a{
+
+color:white;
+text-decoration:none;
+margin-right:25px;
 
 }
 
@@ -61,154 +78,221 @@ header p{
 
 .banner{
 
-    background:
-    linear-gradient(
-    rgba(0,0,0,.6),
-    rgba(0,0,0,.6)
-    ),
-    url("/images/suspension.jpg");
+
+height:450px;
+
+background:
+
+linear-gradient(
+rgba(0,0,0,.6),
+rgba(0,0,0,.6)
+),
+
+url("/images/banner.jpg");
 
 
-    background-size:cover;
-    background-position:center;
+background-size:cover;
 
-    padding:80px 20px;
+background-position:center;
 
-    text-align:center;
+display:flex;
 
-    color:white;
+flex-direction:column;
+
+justify-content:center;
+
+align-items:center;
+
+color:white;
+
+text-align:center;
+
 
 }
 
 
 .banner h1{
 
-    font-size:45px;
+font-size:45px;
 
 }
 
 
 .banner p{
 
-    margin-top:20px;
-    font-size:20px;
+font-size:22px;
+
+margin-top:20px;
 
 }
 
 
 
-/* 分类标题 */
+/* 公司介绍 */
+
+
+.about{
+
+background:white;
+
+padding:50px 10%;
+
+text-align:center;
+
+
+}
+
+
+.about h2{
+
+font-size:32px;
+
+margin-bottom:20px;
+
+}
+
+
+.about p{
+
+line-height:2;
+
+color:#555;
+
+}
+
+
+
+
+/* 产品标题 */
 
 .title{
 
-    text-align:center;
-    padding:40px 20px;
+text-align:center;
+
+padding:40px;
 
 }
 
 
 .title h2{
 
-    font-size:32px;
+font-size:35px;
 
 }
 
 
 
-/* 产品 */
+
+/* 产品区域 */
+
 
 .products{
 
-    display:flex;
 
-    flex-wrap:wrap;
+display:flex;
 
-    justify-content:center;
+flex-wrap:wrap;
 
-    gap:30px;
+justify-content:center;
 
-    padding:30px;
+gap:30px;
+
+padding:30px 5%;
+
 
 }
+
 
 
 
 .card{
 
-    background:white;
+background:white;
 
-    width:280px;
+width:300px;
 
-    border-radius:15px;
+border-radius:15px;
 
-    overflow:hidden;
+overflow:hidden;
 
-    box-shadow:0 5px 15px #ddd;
+box-shadow:0 5px 20px #ddd;
+
 
 }
-
 
 
 .card img{
 
-    width:100%;
+width:100%;
 
-    height:220px;
+height:230px;
 
-    object-fit:cover;
+object-fit:cover;
+
 
 }
 
 
 
-.card div{
+.card-content{
 
-    padding:20px;
+padding:20px;
 
 }
-
 
 
 .card h3{
 
-    font-size:21px;
+font-size:22px;
 
-    margin-bottom:12px;
+margin-bottom:15px;
 
 }
 
 
 .card p{
 
-    color:#666;
+color:#666;
 
-    line-height:1.6;
+line-height:1.7;
 
 }
 
 
 
 
-/* 底部 */
+/* 联系 */
 
-footer{
+.contact{
 
 background:#111;
 
 color:white;
 
+padding:40px;
+
 text-align:center;
-
-padding:25px;
-
-margin-top:40px;
 
 }
 
 
 
-@media(max-width:600px){
+footer{
 
+background:#000;
+
+color:#aaa;
+
+text-align:center;
+
+padding:20px;
+
+}
+
+
+
+
+@media(max-width:700px){
 
 .banner h1{
 
@@ -227,8 +311,8 @@ width:90%;
 }
 
 
-</style>
 
+</style>
 
 </head>
 
@@ -236,27 +320,34 @@ width:90%;
 <body>
 
 
-
 <header>
 
 
 <div class="logo">
 
-🚗 专业汽车底盘悬挂配件
+🚗 专业汽车底盘配件制造商
 
 </div>
 
 
 <p>
-
-专注汽车底盘系统 · 减震系统 · 转向系统 · 半轴系统
-
+Suspension · Steering · Drive System
 </p>
 
 
+
+<nav>
+
+<a href="#">首页</a>
+
+<a href="#products">产品中心</a>
+
+<a href="#contact">联系我们</a>
+
+</nav>
+
+
 </header>
-
-
 
 
 
@@ -265,14 +356,14 @@ width:90%;
 
 <h1>
 
-汽车底盘悬挂解决方案
+汽车底盘悬挂系统解决方案
 
 </h1>
 
 
 <p>
 
-高品质配件 · 稳定性能 · 专业供应
+专业生产控制臂、球头、减震、方向机、半轴系列产品
 
 </p>
 
@@ -281,412 +372,39 @@ width:90%;
 
 
 
-
-
-
-
-<div class="title">
+<section class="about">
 
 <h2>
 
-产品系列
+关于我们
+
+</h2>
+
+
+<p>
+
+我们专注汽车底盘悬挂及转向系统配件研发与供应，
+产品覆盖控制臂、球头、胶套、减震器、方向机、
+半轴及发动机悬置系统。
+
+为全球汽车维修市场、批发商、经销商提供稳定可靠的产品。
+
+</p>
+
+
+</section>
+
+
+
+<div class="title" id="products">
+
+<h2>
+
+产品展示
 
 </h2>
 
 </div>
 
 
-
-
-
-
-
 <section class="products">
-
-
-
-
-
-<div class="card">
-
-<img src="/images/suspension.jpg">
-
-<div>
-
-<h3>汽车底盘悬挂系统</h3>
-
-<p>
-覆盖前后悬挂系统配件，
-提升车辆稳定性、舒适性和安全性能。
-</p>
-
-</div>
-
-</div>
-
-
-
-
-
-
-<div class="card">
-
-<img src="/images/tie-rod.jpg">
-
-<div>
-
-<h3>拉杆球头</h3>
-
-<p>
-用于连接转向系统与悬挂结构，
-保证车辆转向精准。
-</p>
-
-</div>
-
-</div>
-
-
-
-
-
-
-
-<div class="card">
-
-<img src="/images/bushing.jpg">
-
-<div>
-
-<h3>胶套 / 开口胶</h3>
-
-<p>
-减少震动冲击，提高底盘静音效果。
-</p>
-
-</div>
-
-</div>
-
-
-
-
-
-
-
-<div class="card">
-
-<img src="/images/shock.jpg">
-
-<div>
-
-<h3>前减机芯</h3>
-
-<p>
-高性能减震核心部件，
-提升驾驶稳定性。
-</p>
-
-</div>
-
-</div>
-
-
-
-
-
-
-
-<div class="card">
-
-<img src="/images/shock.jpg">
-
-<div>
-
-<h3>前减总成</h3>
-
-<p>
-完整减震系统组合，
-安装方便，性能可靠。
-</p>
-
-</div>
-
-</div>
-
-
-
-
-
-
-
-<div class="card">
-
-<img src="/images/shock.jpg">
-
-<div>
-
-<h3>前减顶胶 / 平面轴承</h3>
-
-<p>
-降低异响，提高转向平顺性。
-</p>
-
-</div>
-
-</div>
-
-
-
-
-
-
-
-<div class="card">
-
-<img src="/images/shock.jpg">
-
-<div>
-
-<h3>前减防尘套 / 缓冲胶</h3>
-
-<p>
-保护减震系统，
-延长使用寿命。
-</p>
-
-</div>
-
-</div>
-
-
-
-
-
-
-
-<div class="card">
-
-<img src="/images/shock.jpg">
-
-<div>
-
-<h3>前减弹簧</h3>
-
-<p>
-提供支撑力，
-保持车身高度稳定。
-</p>
-
-</div>
-
-</div>
-
-
-
-
-
-
-
-<div class="card">
-
-<img src="/images/tie-rod.jpg">
-
-<div>
-
-<h3>后拉杆球头 / 胶套</h3>
-
-<p>
-改善后悬挂稳定性，
-减少底盘松旷。
-</p>
-
-</div>
-
-</div>
-
-
-
-
-
-
-
-<div class="card">
-
-<img src="/images/shock.jpg">
-
-<div>
-
-<h3>后减机芯 / 后减总成</h3>
-
-<p>
-适用于多车型后悬挂维修。
-</p>
-
-</div>
-
-</div>
-
-
-
-
-
-
-
-<div class="card">
-
-<img src="/images/shock.jpg">
-
-<div>
-
-<h3>后减顶胶 / 防尘套 / 缓冲胶</h3>
-
-<p>
-增强减震保护，
-提高耐久性能。
-</p>
-
-</div>
-
-</div>
-
-
-
-
-
-
-
-<div class="card">
-
-<img src="/images/axle.jpg">
-
-<div>
-
-<h3>方向机</h3>
-
-<p>
-提供精准转向控制，
-保证驾驶安全。
-</p>
-
-</div>
-
-</div>
-
-
-
-
-
-
-
-<div class="card">
-
-<img src="/images/axle.jpg">
-
-<div>
-
-<h3>前半轴左 / 前半轴右</h3>
-
-<p>
-传递发动机动力，
-保证车辆正常行驶。
-</p>
-
-</div>
-
-</div>
-
-
-
-
-
-
-
-<div class="card">
-
-<img src="/images/axle.jpg">
-
-<div>
-
-<h3>半轴外球笼 / 内球笼</h3>
-
-<p>
-高强度传动组件，
-减少异响和磨损。
-</p>
-
-</div>
-
-</div>
-
-
-
-
-
-
-
-<div class="card">
-
-<img src="/images/axle.jpg">
-
-<div>
-
-<h3>半轴防尘套修理包</h3>
-
-<p>
-保护球笼结构，
-防止灰尘进入。
-</p>
-
-</div>
-
-</div>
-
-
-
-
-
-
-
-<div class="card">
-
-<img src="/images/mount.jpg">
-
-<div>
-
-<h3>发动机悬置机脚胶</h3>
-
-<p>
-降低发动机震动，
-提升驾驶舒适性。
-</p>
-
-</div>
-
-</div>
-
-
-
-
-
-</section>
-
-
-
-
-
-
-<footer>
-
-专业汽车配件供应商<br>
-
-底盘悬挂 · 减震 · 转向 · 半轴系统
-
-</footer>
-
-
-
-
-</body>
-
-</html>
