@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+
+<meta charset="UTF-8">
+
+<title>提交订单</title>
+
+
+<style>
+
+body{
+font-family:Arial;
+padding:40px;
+}
+
+
+input{
+
+display:block;
+width:300px;
+padding:12px;
+margin:15px 0;
+
+}
+
+
+button{
+
+background:black;
+color:white;
+padding:12px 30px;
+border:0;
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<h1>
+填写订单信息
+</h1>
+
+
+<input id="name" placeholder="收货人">
+
+<input id="phone" placeholder="联系电话">
+
+<input id="address" placeholder="收货地址">
+
+
+<button onclick="submitOrder()">
+
+提交订单
+
+</button>
+
+
+
+<script>
+
+
+function submitOrder(){
+
+
+let order={
+
+
+user:
+document.getElementById("name").value,
+
+
+phone:
+document.getElementById("phone").value,
+
+
+address:
+document.getElementById("address").value,
+
+
+products:
+JSON.parse(localStorage.getItem("cart")) || [],
+
+
+time:
+new Date().toLocaleString()
+
+
+};
+
+
+
+let orders=
+
+JSON.parse(localStorage.getItem("orders")) || [];
+
+
+
+orders.push(order);
+
+
+
+localStorage.setItem(
+
+"orders",
+
+JSON.stringify(orders)
+
+);
+
+
+
+localStorage.removeItem("cart");
+
+
+
+alert("订单提交成功");
+
+
+location.href="index.html";
+
+
+}
+
+
+</script>
+
+
+</body>
+
+</html>
