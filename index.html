@@ -1,891 +1,505 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-
 <head>
-
-<meta charset="UTF-8">
-
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-
-<title>汽车底盘悬挂配件</title>
-
-
-<style>
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-}
-
-
-body{
-
-font-family:"Microsoft YaHei";
-background:#f5f5f5;
-color:#333;
-
-}
-
-
-/* 顶部 */
-
-header{
-
-background:#111;
-color:white;
-padding:25px 8%;
-
-}
-
-
-.logo{
-
-font-size:32px;
-font-weight:bold;
-
-}
-
-
-header p{
-
-margin-top:10px;
-color:#ccc;
-
-}
-
-
-/* 导航 */
-
-nav{
-
-margin-top:20px;
-
-}
-
-
-nav a{
-
-color:white;
-text-decoration:none;
-margin-right:25px;
-
-}
-
-
-
-/* banner */
-
-.banner{
-
-
-height:450px;
-
-background:
-
-linear-gradient(
-rgba(0,0,0,.6),
-rgba(0,0,0,.6)
-),
-
-url("/images/banner.jpg");
-
-
-background-size:cover;
-
-background-position:center;
-
-display:flex;
-
-flex-direction:column;
-
-justify-content:center;
-
-align-items:center;
-
-color:white;
-
-text-align:center;
-
-
-}
-
-
-.banner h1{
-
-font-size:45px;
-
-}
-
-
-.banner p{
-
-font-size:22px;
-
-margin-top:20px;
-
-}
-
-
-
-/* 公司介绍 */
-
-
-.about{
-
-background:white;
-
-padding:50px 10%;
-
-text-align:center;
-
-
-}
-
-
-.about h2{
-
-font-size:32px;
-
-margin-bottom:20px;
-
-}
-
-
-.about p{
-
-line-height:2;
-
-color:#555;
-
-}
-
-
-
-
-/* 产品标题 */
-
-.title{
-
-text-align:center;
-
-padding:40px;
-
-}
-
-
-.title h2{
-
-font-size:35px;
-
-}
-
-
-
-
-/* 产品区域 */
-
-
-.products{
-
-
-display:flex;
-
-flex-wrap:wrap;
-
-justify-content:center;
-
-gap:30px;
-
-padding:30px 5%;
-
-
-}
-
-
-
-
-.card{
-
-background:white;
-
-width:300px;
-
-border-radius:15px;
-
-overflow:hidden;
-
-box-shadow:0 5px 20px #ddd;
-
-
-}
-
-
-.card img{
-
-width:100%;
-
-height:230px;
-
-object-fit:cover;
-
-
-}
-
-
-
-.card-content{
-
-padding:20px;
-
-}
-
-
-.card h3{
-
-font-size:22px;
-
-margin-bottom:15px;
-
-}
-
-
-.card p{
-
-color:#666;
-
-line-height:1.7;
-
-}
-
-
-
-
-/* 联系 */
-
-.contact{
-
-background:#111;
-
-color:white;
-
-padding:40px;
-
-text-align:center;
-
-}
-
-
-
-footer{
-
-background:#000;
-
-color:#aaa;
-
-text-align:center;
-
-padding:20px;
-
-}
-
-
-
-
-@media(max-width:700px){
-
-.banner h1{
-
-font-size:30px;
-
-}
-
-
-.card{
-
-width:90%;
-
-}
-
-
-}
-
-
-
-</style>
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>汽车底盘悬挂配件 | 产品宣传展示</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft Yahei", sans-serif;
+        }
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        .header {
+            background: #222;
+            color: #fff;
+            padding: 40px 20px;
+            text-align: center;
+        }
+        .header h1 {
+            font-size: 32px;
+            margin-bottom:10px;
+        }
+        .header p {
+            font-size:16px;
+            opacity:0.85;
+        }
+        .container {
+            max-width:1400px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        .category-title {
+            font-size:24px;
+            color:#222;
+            margin:40px 0 20px;
+            padding-left:12px;
+            border-left:5px solid #0066cc;
+        }
+        .parts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px,1fr));
+            gap: 24px;
+        }
+        .part-card {
+            background:#fff;
+            border-radius:12px;
+            overflow:hidden;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+        }
+        .part-card:hover {
+            transform: translateY(-6px);
+            box-shadow:0 8px 20px rgba(0,0,0,0.12);
+        }
+        .part-img-box {
+            height:240px;
+            overflow:hidden;
+            background:#eee;
+        }
+        .part-img-box img {
+            width:100%;
+            height:100%;
+            object-fit:cover;
+        }
+        .part-content {
+            padding:20px;
+        }
+        .part-name {
+            font-size:18px;
+            font-weight:bold;
+            color:#0066cc;
+            margin-bottom:10px;
+        }
+        .part-desc {
+            font-size:14px;
+            color:#555;
+        }
+        .footer {
+            text-align:center;
+            padding:30px;
+            background:#222;
+            color:#aaa;
+            margin-top:50px;
+        }
+    </style>
 </head>
-
-
 <body>
-
-
-<header>
-
-
-<div class="logo">
-
-🚗 专业汽车底盘配件制造商
-
-</div>
-
-
-<p>
-Suspension · Steering · Drive System
-</p>
-
-
-
-<nav>
-
-<a href="#">首页</a>
-
-<a href="#products">产品中心</a>
-
-<a href="#contact">联系我们</a>
-
-</nav>
-
-
-</header>
-
-
-
-<section class="banner">
-
-
-<h1>
-
-汽车底盘悬挂系统
-
-</h1>
-
-
-<p>
-
-专业生产控制臂、球头、减震、方向机、半轴系列产品
-
-</p>
-
-
-</section>
-
-
-
-<section class="about">
-
-<h2>
-
-关于我们
-
-</h2>
-
-
-<p>
-
-我们专注汽车底盘悬挂及转向系统配件研发与供应，
-产品覆盖控制臂、球头、胶套、减震器、方向机、
-半轴及发动机悬置系统。
-
-为全球汽车维修市场、批发商、经销商提供稳定可靠的产品。
-
-</p>
-
-
-</section>
-
-
-
-<div class="title" id="products">
-
-<h2>
-
-产品展示
-
-</h2>
-
-</div>
-
-
-<section class="products">
-
-    <!-- 前控制臂 -->
-
-<div class="card">
-
-<img src="/images/control-arm.jpg">
-
-<div class="card-content">
-
-<h3>前控制臂</h3>
-
-<p>
-连接车身与车轮的重要悬挂部件，
-保证车辆行驶稳定性，提高操控性能。
-</p>
-
-</div>
-
-</div>
-
-
-
-
-<!-- 后控制臂 -->
-
-<div class="card">
-
-<img src="/images/control-arm.jpg">
-
-<div class="card-content">
-
-<h3>后控制臂</h3>
-
-<p>
-用于后悬挂系统定位，
-降低车辆行驶中的摆动和异响。
-</p>
-
-</div>
-
-</div>
-
-
-
-
-
-<!-- 前平衡杆边杆球头 -->
-
-<div class="card">
-
-<img src="/images/stabilizer.jpg">
-
-<div class="card-content">
-
-<h3>前平衡杆边杆球头</h3>
-
-<p>
-增强车辆横向稳定性，
-减少转弯侧倾，提高驾驶舒适度。
-</p>
-
-</div>
-
-</div>
-
-
-
-
-
-<!-- 后平衡杆边杆球头 -->
-
-<div class="card">
-
-<img src="/images/stabilizer.jpg">
-
-<div class="card-content">
-
-<h3>后平衡杆边杆球头</h3>
-
-<p>
-优化后悬挂支撑效果，
-提升高速行驶稳定性。
-</p>
-
-</div>
-
-</div>
-
-
-
-
-
-<!-- 外球头 -->
-
-<div class="card">
-
-<img src="/images/ball-joint.jpg">
-
-<div class="card-content">
-
-<h3>外球头</h3>
-
-<p>
-连接转向节与转向拉杆，
-保证车辆转向精准。
-</p>
-
-</div>
-
-</div>
-
-
-
-
-
-<!-- 内球头 -->
-
-<div class="card">
-
-<img src="/images/ball-joint.jpg">
-
-<div class="card-content">
-
-<h3>内球头</h3>
-
-<p>
-用于转向系统内部连接，
-提升转向灵活性和稳定性。
-</p>
-
-</div>
-
-</div>
-
-
-
-
-
-<!-- 胶套 -->
-
-<div class="card">
-
-<img src="/images/bushing.jpg">
-
-<div class="card-content">
-
-<h3>悬挂胶套</h3>
-
-<p>
-有效吸收震动，
-降低底盘噪音和冲击。
-</p>
-
-</div>
-
-</div>
-
-
-
-
-
-<!-- 开口胶 -->
-
-<div class="card">
-
-<img src="/images/bushing.jpg">
-
-<div class="card-content">
-
-<h3>开口胶</h3>
-
-<p>
-稳定平衡杆工作状态，
-提升悬挂系统耐久性。
-</p>
-
-</div>
-
-</div>
-
-
-
-
-
-
-<!-- 前减机芯 -->
-
-<div class="card">
-
-<img src="/images/shock.jpg">
-
-<div class="card-content">
-
-<h3>前减机芯</h3>
-
-<p>
-高性能减震核心组件，
-有效控制车身震动。
-</p>
-
-</div>
-
-</div>
-
-
-
-
-
-<!-- 前减总成 -->
-
-<div class="card">
-
-<img src="/images/shock.jpg">
-
-<div class="card-content">
-
-<h3>前减总成</h3>
-
-<p>
-包含减震器、弹簧等组合，
-方便维修更换。
-</p>
-
-</div>
-
-</div>
-
-
-
-
-
-<!-- 前减顶胶 -->
-
-<div class="card">
-
-<img src="/images/shock.jpg">
-
-<div class="card-content">
-
-<h3>前减顶胶</h3>
-
-<p>
-减少顶部冲击，
-提高驾驶舒适性。
-</p>
-
-</div>
-
-</div>
-
-
-
-
-
-<!-- 前减平面轴承 -->
-
-<div class="card">
-
-<img src="/images/shock.jpg">
-
-<div class="card-content">
-
-<h3>前减平面轴承</h3>
-
-<p>
-辅助减震器转向动作，
-降低转向异响。
-</p>
-
-</div>
-
-</div>
-
-
-
-
-
-<!-- 前减防尘套缓冲胶 -->
-
-<div class="card">
-
-<img src="/images/shock.jpg">
-
-<div class="card-content">
-
-<h3>前减防尘套缓冲胶</h3>
-
-<p>
-保护减震杆，
-延长减震系统寿命。
-</p>
-
-</div>
-
-</div>
-
-
-
-
-
-<!-- 前减弹簧 -->
-
-<div class="card">
-
-<img src="/images/shock.jpg">
-
-<div class="card-content">
-
-<h3>前减弹簧</h3>
-
-<p>
-提供车身支撑，
-保持车辆高度稳定。
-</p>
-
-</div>
-
-</div>
-
-
-
-
-
-
-
-<!-- 后拉杆球头 -->
-
-<div class="card">
-
-<img src="/images/stabilizer.jpg">
-
-<div class="card-content">
-
-<h3>后拉杆球头</h3>
-
-<p>
-改善后悬挂连接性能，
-提升车辆稳定性。
-</p>
-
-</div>
-
-</div>
-
-
-
-
-
-<!-- 后胶套 -->
-
-<div class="card">
-
-<img src="/images/bushing.jpg">
-
-<div class="card-content">
-
-<h3>后悬挂胶套</h3>
-
-<p>
-减少后底盘震动，
-提升行驶舒适度。
-</p>
-
-</div>
-
-</div>
-
-
-
-
-
-<!-- 后减机芯 -->
-
-<div class="card">
-
-<img src="/images/shock.jpg">
-
-<div class="card-content">
-
-<h3>后减机芯</h3>
-
-<p>
-适用于后悬挂维修，
-提供稳定减震效果。
-</p>
-
-</div>
-
-</div>
-
-
-
-
-
-<!-- 后减总成 -->
-
-<div class="card">
-
-<img src="/images/shock.jpg">
-
-<div class="card-content">
-
-<h3>后减总成</h3>
-
-<p>
-完整后减震解决方案，
-安装方便可靠。
-</p>
-
-</div>
-
-</div>
-
-
-
-
-
-<!-- 后减顶胶 -->
-
-<div class="card">
-
-<img src="/images/shock.jpg">
-
-<div class="card-content">
-
-<h3>后减顶胶</h3>
-
-<p>
-降低悬挂冲击，
-减少异响。
-</p>
-
-</div>
-
-</div>
-
-
-
-
-
-<!-- 后减防尘套 -->
-
-<div class="card">
-
-<img src="/images/shock.jpg">
-
-<div class="card-content">
-
-<h3>后减防尘套</h3>
-
-<p>
-保护减震器内部结构，
-防止灰尘污染。
-</p>
-
-</div>
-
-</div>
-
-
-
-
-
-<!-- 后缓冲胶 -->
-
-<div class="card">
-
-<img src="/images/shock.jpg">
-
-<div class="card-content">
-
-<h3>后减缓冲胶</h3>
-
-<p>
-吸收极限冲击，
-保护悬挂系统。
-</p>
-
-</div>
-
-</div>
+    <div class="header">
+        <h1>汽车底盘悬挂全套配件</h1>
+        <p>底盘件｜减震器｜控制臂｜球头｜半轴｜机脚胶 专业配件供应 · 产品宣传展示（无在线交易）</p>
+    </div>
+    <div class="container">
+        <!-- 第一大类：控制臂、球头、胶套类 -->
+        <h2 class="category-title">底盘控制臂 & 平衡杆球头 & 转向球头 & 胶套类</h2>
+        <div class="parts-grid">
+            <!-- 前控制臂 -->
+            <div class="part-card">
+                <div class="part-img-box">
+                    <img src="https://via.placeholder.com/400x300?text=前控制臂" alt="前控制臂">
+                </div>
+                <div class="part-content">
+                    <h3 class="part-name">前控制臂（下摆臂）</h3>
+                    <div class="part-desc">
+                        底盘悬挂核心部件，连接车架与转向节，承受车轮纵向、横向载荷，缓冲路面冲击。<br>
+                        故障现象：底盘异响、松散、跑偏、轮胎异常磨损。<br>
+                        适配各类乘用车型，材质选用加厚锻钢，配套原厂工艺橡胶衬套，提升行驶稳定性。
+                    </div>
+                </div>
+            </div>
+            <!-- 后控制臂 -->
+            <div class="part-card">
+                <div class="part-img-box">
+                    <img src="https://via.placeholder.com/400x300?text=后控制臂" alt="后控制臂">
+                </div>
+                <div class="part-content">
+                    <h3 class="part-name">后控制臂</h3>
+                    <div class="part-desc">
+                        后轮定位关键部件，约束后轮定位角度，保障后轮行驶轨迹。<br>
+                        老化损坏会导致后轮外倾、吃胎、车尾晃动。<br>
+                        精密开模，衬套耐老化，高强度结构，适合替换维修。
+                    </div>
+                </div>
+            </div>
+            <!-- 前平衡杆边杆球头 -->
+            <div class="part-card">
+                <div class="part-img-box">
+                    <img src="https://via.placeholder.com/400x300?text=前平衡杆边杆球头" alt="前平衡杆边杆球头">
+                </div>
+                <div class="part-content">
+                    <h3 class="part-name">前平衡杆边杆球头（前小连杆）</h3>
+                    <div class="part-desc">
+                        连接稳定杆与减震器/羊角，车辆过弯抑制侧倾。<br>
+                        常见故障：过减速带“咚咚”底盘异响，球头防尘套破损漏油松旷。<br>
+                        球头密封防尘设计，耐磨损，降低转弯侧倾。
+                    </div>
+                </div>
+            </div>
+            <!-- 后平衡杆边杆球头 -->
+            <div class="part-card">
+                <div class="part-img-box">
+                    <img src="https://via.placeholder.com/400x300?text=后平衡杆边杆球头" alt="后平衡杆边杆球头">
+                </div>
+                <div class="part-content">
+                    <h3 class="part-name">后平衡杆边杆球头（后小连杆）</h3>
+                    <div class="part-desc">
+                        后稳定杆连杆，减少车尾侧倾，提升高速过弯稳定性。<br>
+                        损坏表现：颠簸路面车尾异响，松散。<br>
+                        耐老化防尘套，球头预压工艺，使用寿命长。
+                    </div>
+                </div>
+            </div>
+            <!-- 外球头 -->
+            <div class="part-card">
+                <div class="part-img-box">
+                    <img src="https://via.placeholder.com/400x300?text=转向外球头" alt="转向外球头">
+                </div>
+                <div class="part-content">
+                    <h3 class="part-name">转向外球头（拉杆外球头）</h3>
+                    <div class="part-desc">
+                        转向拉杆末端球头，传递转向力，控制车轮转向。<br>
+                        松旷会导致方向盘虚位变大、跑偏、高速抖动。<br>
+                        精密球头结构，防尘保护，更换后建议做四轮定位。
+                    </div>
+                </div>
+            </div>
+            <!-- 内球头 -->
+            <div class="part-card">
+                <div class="part-img-box">
+                    <img src="https://via.placeholder.com/400x300?text=转向内球头" alt="转向内球头">
+                </div>
+                <div class="part-content">
+                    <h3 class="part-name">转向内球头</h3>
+                    <div class="part-desc">
+                        方向机内部拉杆球头，连接方向机齿条和外拉杆。<br>
+                        故障：转向异响、方向盘间隙大。<br>
+                        高强度螺纹，耐冲击，适配多种车型方向机维修。
+                    </div>
+                </div>
+            </div>
+            <!-- 胶套 -->
+            <div class="part-card">
+                <div class="part-img-box">
+                    <img src="https://via.placeholder.com/400x300?text=底盘胶套" alt="底盘胶套">
+                </div>
+                <div class="part-content">
+                    <h3 class="part-name">底盘衬套胶套（控制臂胶套）</h3>
+                    <div class="part-desc">
+                        控制臂缓冲橡胶件，过滤震动，金属部件柔性连接。<br>
+                        老化开裂会底盘松散、异响。<br>
+                        高韧性橡胶，抗老化、耐高低温，可单独更换无需换总成。
+                    </div>
+                </div>
+            </div>
+            <!-- 开口胶 -->
+            <div class="part-card">
+                <div class="part-img-box">
+                    <img src="https://via.placeholder.com/400x300?text=平衡杆开口胶" alt="平衡杆开口胶">
+                </div>
+                <div class="part-content">
+                    <h3 class="part-name">平衡杆开口胶</h3>
+                    <div class="part-desc">
+                        稳定杆固定橡胶衬套，包裹平衡杆，减少摩擦异响。<br>
+                        磨损后低速过坎咯吱异响。<br>
+                        耐磨橡胶材质，拆装方便，维修性价比高。
+                    </div>
+                </div>
+            </div>
+            <!-- 后拉杆球头 -->
+            <div class="part-card">
+                <div class="part-img-box">
+                    <img src="https://via.placeholder.com/400x300?text=后拉杆球头" alt="后面拉杆球头">
+                </div>
+                <div class="part-content">
+                    <h3 class="part-name">后拉杆球头</h3>
+                    <div class="part-desc">
+                        后轮多连杆拉杆球头，负责后轮定位。<br>
+                        损坏会后轮吃胎、尾部晃动。<br>
+                        密封防尘设计，适用于后轮悬挂维修替换。
+                    </div>
+                </div>
+            </div>
+            <!-- 后拉杆胶套 -->
+            <div class="part-card">
+                <div class="part-img-box">
+                    <img src="https://via.placeholder.com/400x300?text=后拉杆胶套" alt="后拉杆胶套">
+                </div>
+                <div class="part-content">
+                    <h3 class="part-name">后拉杆胶套</h3>
+                    <div class="part-desc">
+                        后轮拉杆橡胶衬套，缓冲震动，保持定位角度。<br>
+                        橡胶老化变形，后轮参数偏移。<br>
+                        高弹性耐老化橡胶，单独维修更换配件。
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 第二大类：前减震全套 -->
+        <h2 class="category-title">前减震全套配件</h2>
+        <div class="parts-grid">
+            <!-- 前减机芯 -->
+            <div class="part-card">
+                <div class="part-img-box">
+                    <img src="https://via.placeholder.com/400x300?text=前减机芯" alt="前减机芯">
+                </div>
+                <div class="part-content">
+                    <h3 class="part-name">前减震机芯</h3>
+                    <div class="part-desc">
+                        减震核心阻尼部件，控制弹簧回弹，吸收路面颠簸。<br>
+                        漏油失效：车身晃动、刹车点头、颠簸弹跳。<br>
+                        精密液压阻尼，稳定减震效果，适合减震维修替换。
+                    </div>
+                </div>
+            </div>
+            <!-- 前减总成 -->
+            <div class="part-card">
+                <div class="part-img-box">
+                    <img src="https://via.placeholder.com/400x300?text=前减总成" alt="前减总成">
+                </div>
+                <div class="part-content">
+                    <h3 class="part-name">前减震总成</h3>
+                    <div class="part-desc">
+                        预装弹簧+机芯全套总成，直接装车，省去压弹簧工序。<br>
+                        优势：维修安装快捷，整套悬挂性能恢复。<br>
+                        液压减震，适配家用乘用车，舒适性强。
+                    </div>
+                </div>
+            </div>
+            <!-- 前减顶胶 -->
+            <div class="part-card">
+                <div class="part-img-box">
+                    <img src="https://via.placeholder.com/400x300?text=前减顶胶" alt="前减顶胶">
+                </div>
+                <div class="part-content">
+                    <h3 class="part-name">前减震顶胶</h3>
+                    <div class="part-desc">
+                        减震器上部支撑橡胶件，连接车身与减震。<br>
+                        损坏：原地打方向咯吱异响、减震下沉。<br>
+                        高抗压橡胶，减少震动传递至车厢。
+                    </div>
+                </div>
+            </div>
+            <!-- 前减平面轴承 -->
+            <div class="part-card">
+                <div class="part-img-box">
+                    <img src="https://via.placeholder.com/400x300?text=前减平面轴承" alt="前减平面轴承">
+                </div>
+                <div class="part-content">
+                    <h3 class="part-name">前减震平面轴承</h3>
+                    <div class="part-desc">
+                        安装在顶胶内部，转向时减震随车轮转动。<br>
+                        轴承卡滞：原地打方向沉重、“咔咔”异响。<br>
+                        防尘密封轴承，降低转向摩擦阻力。
+                    </div>
+                </div>
+            </div>
+            <!-- 前减防尘套缓冲胶 -->
+            <div class="part-card">
+                <div class="part-img-box">
+                    <img src="https://via.placeholder.com/400x300?text=前减防尘套缓冲胶" alt="前减防尘套缓冲胶">
+                </div>
+                <div class="part-content">
+                    <h3 class="part-name">前减防尘套+缓冲胶</h3>
+                    <div class="part-desc">
+                        防尘套保护减震活塞杆，缓冲胶极限压缩保护减震。<br>
+                        破损进水会加速减震漏油。<br>
+                        防尘套耐橡胶老化，缓冲胶高韧性，一套两件维修包。
+                    </div>
+                </div>
+            </div>
+            <!-- 前减弹簧 -->
+            <div class="part-card">
+                <div class="part-img-box">
+                    <img src="https://via.placeholder.com/400x300?text=前减震弹簧" alt="前减震弹簧">
+                </div>
+                <div class="part-content">
+                    <h3 class="part-name">前减震弹簧</h3>
+                    <div class="part-desc">
+                        承载车身重量，支撑车身，配合减震吸收震动。<br>
+                        疲劳断裂/衰减：车身一侧下沉，底盘高度不一致。<br>
+                        合金钢材，热处理工艺，不易疲劳衰减。
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 第三大类：后减震全套 -->
+        <h2 class="category-title">后减震全套配件</h2>
+        <div class="parts-grid">
+            <!-- 后减机芯 -->
+            <div class="part-card">
+                <div class="part-img-box">
+                    <img src="https://via.placeholder.com/400x300?text=后减机芯" alt="后减机芯">
+                </div>
+                <div class="part-content">
+                    <h3 class="part-name">后减震机芯</h3>
+                    <div class="part-desc">
+                        后轮减震阻尼芯，抑制后轮弹跳，提升后排乘坐稳定性。<br>
+                        漏油失效，后轮颠簸发飘。<br>
+                        液压阻尼结构，适配多连杆后悬挂车型。
+                    </div>
+                </div>
+            </div>
+            <!-- 后减总成 -->
+            <div class="part-card">
+                <div class="part-img-box">
+                    <img src="https://via.placeholder.com/400x300?text=后减总成" alt="后减总成">
+                </div>
+                <div class="part-content">
+                    <h3 class="part-name">后减震总成</h3>
+                    <div class="part-desc">
+                        后减震整套总成，弹簧+减震一体件，直接装车。<br>
+                        适合快速维修更换，恢复后轮悬挂性能。<br>
+                        阻尼调校兼顾舒适性与支撑性。
+                    </div>
+                </div>
+            </div>
+            <!-- 后减顶胶 -->
+            <div class="part-card">
+                <div class="part-img-box">
+                    <img src="https://via.placeholder.com/400x300?text=后减顶胶" alt="后减顶胶">
+                </div>
+                <div class="part-content">
+                    <h3 class="part-name">后减震顶胶</h3>
+                    <div class="part-desc">
+                        后减震上部支撑橡胶垫，隔离震动。<br>
+                        老化后过坎异响，减震固定松动。<br>
+                        耐压缩橡胶，适配各类后悬结构。
+                    </div>
+                </div>
+            </div>
+            <!-- 后减防尘套缓冲胶 -->
+            <div class="part-card">
+                <div class="part-img-box">
+                    <img src="https://via.placeholder.com/400x300?text=后减防尘套缓冲胶" alt="后减防尘套缓冲胶">
+                </div>
+                <div class="part-content">
+                    <h3 class="part-name">后减防尘套 + 缓冲胶</h3>
+                    <div class="part-desc">
+                        保护后减震活塞杆，防止泥沙划伤油封，缓冲极限冲击。<br>
+                        防尘套破损是减震漏油诱因。<br>
+                        维修小包，更换减震建议同步更换。
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 第四大类：方向机、半轴类 -->
+        <h2 class="category-title">方向机 & 半轴、球笼配件</h2>
+        <div class="parts-grid">
+            <!-- 方向机 -->
+            <div class="part-card">
+                <div class="part-img-box">
+                    <img src="https://via.placeholder.com/400x300?text=方向机" alt="方向机">
+                </div>
+                <div class="part-content">
+                    <h3 class="part-name">方向机（转向机总成）</h3>
+                    <div class="part-desc">
+                        整车转向核心总成，将方向盘转动转化为车轮转向动作。<br>
+                        故障：转向沉重、漏油、内部间隙大、高速抖动。<br>
+                        机械/电子助力版本可选，精密齿条加工。
+                    </div>
+                </div>
+            </div>
+            <!-- 前半轴左 -->
+            <div class="part-card">
+                <div class="part-img-box">
+                    <img src="https://via.placeholder.com/400x300?text=左前半轴" alt="左前半轴">
+                </div>
+                <div class="part-content">
+                    <h3 class="part-name">左前半轴总成</h3>
+                    <div class="part-desc">
+                        传递变速箱动力至左前轮，允许车轮转向+上下跳动。<br>
+                        损坏表现：转弯“咔咔”异响，动力传递抖动。<br>
+                        整体动平衡校正，高强度传动轴。
+                    </div>
+                </div>
+            </div>
+            <!-- 前半轴右 -->
+            <div class="part-card">
+                <div class="part-img-box">
+                    <img src="https://via.placeholder.com/400x300?text=右前半轴" alt="右前半轴">
+                </div>
+                <div class="part-content">
+                    <h3 class="part-name">右前半轴总成</h3>
+                    <div class="part-desc">
+                        传递动力至右前轮，适配前驱车型。<br>
+                        球笼损坏转弯异响，半轴变形加速抖动。<br>
+                        精密热处理，耐用性强。
+                    </div>
+                </div>
+            </div>
+            <!-- 半轴外球笼 -->
+            <div class="part-card">
+                <div class="part-img-box">
+                    <img src="https://via.placeholder.com/400x300?text=半轴外球笼" alt="半轴外球笼">
+                </div>
+                <div class="part-content">
+                    <h3 class="part-name">半轴外球笼</h3>
+                    <div class="part-desc">
+                        靠近车轮一侧万向节，车轮转向时持续传递动力。<br>
+                        防尘套破损进泥沙，转弯咔咔响。<br>
+                        高硬度钢珠，耐磨，维修单独替换件。
+                    </div>
+                </div>
+            </div>
+            <!-- 半轴内球笼 -->
+            <div class="part-card">
+                <div class="part-img-box">
+                    <img src="https://via.placeholder.com/400x300?text=半轴内球笼" alt="半轴内球笼">
+                </div>
+                <div class="part-content">
+                    <h3 class="part-name">半轴内球笼</h3>
+                    <div class="part-desc">
+                        靠近变速箱一侧万向节，补偿悬挂上下跳动行程。<br>
+                        损坏：急加速车身抖动。<br>
+                        承载扭矩大，适合前驱车型维修。
+                    </div>
+                </div>
+            </div>
+            <!-- 半轴防尘套修理包 -->
+            <div class="part-card">
+                <div class="part-img-box">
+                    <img src="https://via.placeholder.com/400x300?text=半轴防尘套修理包" alt="半轴防尘套修理包">
+                </div>
+                <div class="part-content">
+                    <h3 class="part-name">半轴防尘套修理包</h3>
+                    <div class="part-desc">
+                        内含防尘套、卡箍、专用润滑脂，保护球笼。<br>
+                        防尘套破裂及时更换，避免球笼快速磨损报废。<br>
+                        性价比维修方案，无需直接更换半轴总成。
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 第五大类：发动机机脚胶 -->
+        <h2 class="category-title">发动机悬置机脚胶</h2>
+        <div class="parts-grid">
+            <div class="part-card">
+                <div class="part-img-box">
+                    <img src="https://via.placeholder.com/400x300?text=发动机机脚胶" alt="发动机悬置机脚胶">
+                </div>
+                <div class="part-content">
+                    <h3 class="part-name">发动机悬置机脚胶（机爪垫）</h3>
+                    <div class="part-desc">
+                        支撑发动机+变速箱，隔绝发动机震动传递至车身。<br>
+                        老化塌陷：怠速抖动、挂挡冲击、机舱共振异响。<br>
+                        高强度橡胶，部分带液压缓冲，降低怠速震动。
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <p>产品仅展示宣传｜底盘悬挂配件，支持多车型配套，可提供OE号适配查询</p>
+    </div>
+</body>
+</html>
